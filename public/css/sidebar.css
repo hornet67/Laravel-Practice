@@ -1,0 +1,126 @@
+/* --------------------------- Sidebar Design Start From Here ------------------------------------ */
+.toggle-sidebar, .logout i{
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.logout a{
+    color: rgb(33, 37, 41);
+}
+
+.sidenav {
+    width: 260px;
+    background-color: #343a40;
+    overflow: auto;
+    padding: 8px;
+    transition: width 0.3s;
+    box-sizing: border-box;
+}
+
+.sidenav a, .sidenav li{
+    color: rgb(194, 199, 208);
+}
+
+.sidenav hr{
+    border: 1px solid #80808026;
+    margin: 2px 0;
+}
+
+.sidenav.show{
+    display: block;
+}
+
+.sidenav.hide{
+    width: 0;
+    padding: 0;
+}
+
+.width{
+    width: 100%;
+}
+
+.rotate{
+    transform: rotate(+90deg);
+}
+  
+.sidenav a:hover, .sidenav li:hover,
+.sidenav a:active, .sidenav li:active  {
+    color: #f1f1f1;
+    background: gray;
+}
+
+.menu-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 8px 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.menu-title p{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-title p i{
+    width: 20px;
+    font-size: 18px;
+}
+
+.menu-item .menu-title.active, .menu-item .menu-title.active:hover  {
+    color: #f1f1f1;
+    background: #00aaffcf;
+}
+
+.sub-menu-item .menu-title.active, .sub-menu-item .menu-title.active:hover  {
+    color: #f1f1f1;
+    background: #00bfff;
+}
+
+.sub-menu1-item .menu-title.active, .sub-menu1-item .menu-title.active:hover  {
+    color: #f1f1f1;
+    background: #00bfff99;
+}
+
+.sub-menu2-item .menu-title.active, .sub-menu2-item .menu-title.active:hover  {
+    color: #f1f1f1;
+    background: #00caff99;
+}
+
+.sub-menu-item {
+    padding-left: 25px;
+    background-color: #343a40;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sub-menu, .sub-menu1, .sub-menu2 {
+    display: none;
+}
+
+.sub-menu.show, .sub-menu1.show, .sub-menu2.show {
+    display: block;
+}
+
+.sub-menu1-item {
+    padding-left: 25px;
+    background-color: #343a40;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sub-menu2-item {
+    padding-left: 25px;
+    background-color: #5a5a5a;
+    color: #fff;
+    cursor: pointer;
+}
+
+hr {
+    border: 1px solid #ccc;
+}
+
+/* --------------------------- Sidebar Design End At Here ------------------------------------ */

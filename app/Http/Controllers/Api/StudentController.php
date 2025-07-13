@@ -18,7 +18,6 @@ class StudentController extends Controller
     
     
     public function add(Request $req){
-        // dd($req);
         $req->validate([
             'name'=> 'required',
             'email'=> 'required|email',
