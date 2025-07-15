@@ -54,5 +54,32 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-item" data-url="{{route('showBank')}}">
+            <div class="menu-title">
+                <p>
+                    <i class="fa-solid fa-house"></i>
+                    Bank
+                </p>
+                {{-- <i class="fas fa-angle-right"></i> --}}
+            </div>
+        </li>
+        <li class="menu-item" data-url="{{route('showStudent')}}">
+            <div class="menu-title">
+                <p>
+                    <i class="fa-solid fa-house"></i>
+                    Student
+                </p>
+                {{-- <i class="fas fa-angle-right"></i> --}}
+            </div>
+        </li>
+        <li class="menu-item" data-url="{{route('showSubject')}}">
+            <div class="menu-title" >
+                <p>
+                    <i class="fa-solid fa-house"></i>
+                    Subject
+                </p>
+                {{-- <i class="fas fa-angle-right"></i> --}}
+            </div>
+        </li>
     </ul>
 </aside>

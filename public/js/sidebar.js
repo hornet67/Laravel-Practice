@@ -32,7 +32,11 @@ function SidebarAjax() {
         let parent = $(this).parent();
         let active = $(this).hasClass('active');
         let baseURL = parent.data('url');
-
+        // let baseURL = parent.attr('data-url');
+        // console.log(
+        //     'ad'
+        // );
+        
         if (!active && baseURL) {
             let url = baseURL.replace(/^(http[s]?:\/\/[^/]+)/, window.location.origin);
             history.pushState(null, '', url);
@@ -57,7 +61,9 @@ function SidebarAjax() {
         $(this).toggleClass('active');
         let parent = $(this).parent();
         // console.log(parent);
-
+console.log(
+            'ad'
+        );
         let subMenu = parent.find('.sub-menu');
         if (subMenu.length) {
             subMenu.toggleClass('show');

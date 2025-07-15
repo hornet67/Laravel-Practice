@@ -8,6 +8,10 @@
     
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datatable.css') }}">
+    <!-- Font Awesome CDN -->
+    <link href="{{ asset('css/fontawesome/css/all.css') }}" rel="stylesheet">
 
     <script src="{{ asset('js/jQuery-3.7.1.js') }}"></script>
 
@@ -18,26 +22,54 @@
             }
         });
     </script>
-    <script src="{{ asset('js/sidebar.js') }}"></script>
+    
+
+
     @yield('css')
     @yield('js')
     <title>Layout</title>
 </head>
 <body>
-    <div class="main-body">
+    <div class="main-container">
+        <!-- Sidebar Container -->
+        @include('layouts.sidebar')
+
+        <!-- Body Wrapper. Contains main content -->
+        <div class="body-wrapper">
+            <!-- include header file --> 
+            @include('layouts.header')
+            
+
+            <!-- Dynamic Content will be added here -->
+            <div class="main-content">
+                @yield('main-content')
+            </div>
+
+
+            <!-- Include Footer file --> 
+            @include('layouts.footer')
+        </div>
+    </div>
+    {{-- <div class="main-body">
         @include('layouts.sidebar')
         
         <div>
             @include('layouts.header')
-            
+
             <div class="main-content">
                 @yield('main-content')
             </div>
-    
-            
+
             @include('layouts.footer')
         </div>
-    </div>
+    </div> --}}
 
+    <script src="{{ asset('js/sidebar.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            SidebarAjax()
+        });
+    </script>
 </body>
 </html>

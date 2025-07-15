@@ -9,9 +9,12 @@ use App\Http\Controllers\Controller;
 
 class StudentController extends Controller
 {
-    public function show(){
+    public function show(Request $req){
         // $student = Student::where('phone','like','%12%')->get();
         $student = Student::get();
+        if($req->ajax()){
+            return view('main-content.ajaxBlade',compact('student'));
+        }
         return view('main-content.student',compact('student'));
         // return view('main-content.student',['student'=>$student]);
     }
