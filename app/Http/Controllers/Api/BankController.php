@@ -1,45 +1,62 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use App\Models\Bank;
 
 class BankController extends Controller
 {
     public function show(Request $req){
-        // $student = Student::where('phone','like','%12%')->get();
-        // $student = Student::get();
         $name = "Bank";
         if($req->ajax()){
             return view('bank.ajaxBlade',compact('name'));
-        }
+        } 
         return view('bank.main',compact('name'));
-        
-        // return view('main-content.student',['student'=>$student]);
+    }
+
+
+
+    public function showData(Request $req){
+        $data = Bank::get();
+
+        return response()->json([
+            'status'=> true,
+            'data' => $data,
+        ], 200);
     }
     
     
     public function add(Request $req){
         $req->validate([
             'name'=> 'required',
-            'email'=> 'required|email',
+            'address'=> 'required',
             'phone'=> 'required',
         ]);
 
-        Student::create([
+        Bank::create([
             'name' => $req->name,
-            'email' => $req->email,
             'phone' => $req->phone,
+            'address' => $req->address,
         ]);
 
-        return 'Succeessfully Added';
+        return response()->json([
+            'status'=> true,
+            'message' => 'Data added Successfully',
+        ], 200);
     }
     
     
     public function edit(Request $req){
-        $student = Student::findOrFail($req->id);
+        $data = Bank::findOrFail($req->id);
 
-        return view('main-content.editStudent',compact('student'));
+        return response()->json([
+            'status'=> true,
+            'data'=>$data
+        ], 200);
+        // return view('main-content.editStudent',compact('student'));
         // return $student;
     }
     

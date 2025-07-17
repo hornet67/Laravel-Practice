@@ -3,9 +3,7 @@
     $searchOptionValue = request()->query('searchOption');
 @endphp
 
-@extends('layouts.layout')
-@section('main-content')
-    {{-- Add Button And Search Fields --}}
+{{-- Add Button And Search Fields --}}
     <div class="add-search">
         <div class="rows">
             <div class="c-3">
@@ -26,13 +24,7 @@
     <div class="load-data">
         <table class="data-table" id="data-table">
             <caption>{{ $name }} Details</caption>
-            <thead>
-                <th>Sl</th>
-                <th>name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Action</th>
-            </thead>
+            <thead></thead>
             <tbody></tbody>
             <tfoot></tfoot>
         </table>
@@ -42,9 +34,9 @@
 
 
     {{-- @if (Auth::user()->user_role == 1) --}}
-    @include('bank.add')
+    @include('subject.add')
 
-    @include('bank.edit')
+    @include('subject.edit')
     {{-- @endif --}}
 
     {{-- @include('common_modals.detailsModal') --}}
@@ -55,6 +47,6 @@
 
 
     <!-- ajax part start from here -->
-    <script src="{{ asset('js/ajax/bank.js') }}"></script>
+    <script src="{{ asset('js/ajax/subject.js') }}"></script>
     {{-- <script src="{{ asset('js/ajax/search_by_input.js') }}"></script> --}}
-@endsection
+

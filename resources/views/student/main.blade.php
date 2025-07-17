@@ -1,16 +1,12 @@
-@php
-    $searchValue = request()->query('search');
-    $searchOptionValue = request()->query('searchOption');
-@endphp
-
 @extends('layouts.layout')
 @section('main-content')
     {{-- Add Button And Search Fields --}}
     <div class="add-search">
         <div class="rows">
             <div class="c-3">
-                {{-- @if(auth()->user()->hasPermission(284)) --}}
-                    <button class="open-modal" data-modal-id="addModal" id="add"><i class="fa-solid fa-plus"></i> Add {{ $name }} </button>
+                {{-- @if (auth()->user()->hasPermission(284)) --}}
+                <button class="open-modal" data-modal-id="addModal" id="add"><i class="fa-solid fa-plus"></i> Add
+                    {{ $name }} </button>
                 {{-- @endif --}}
             </div>
             <div class="c-6">
@@ -26,13 +22,7 @@
     <div class="load-data">
         <table class="data-table" id="data-table">
             <caption>{{ $name }} Details</caption>
-            <thead>
-                <th>Sl</th>
-                <th>name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Action</th>
-            </thead>
+            <thead></thead>
             <tbody></tbody>
             <tfoot></tfoot>
         </table>
@@ -42,9 +32,9 @@
 
 
     {{-- @if (Auth::user()->user_role == 1) --}}
-    @include('bank.add')
+    @include('student.add')
 
-    @include('bank.edit')
+    @include('student.edit')
     {{-- @endif --}}
 
     {{-- @include('common_modals.detailsModal') --}}
@@ -55,6 +45,6 @@
 
 
     <!-- ajax part start from here -->
-    <script src="{{ asset('js/ajax/bank.js') }}"></script>
+    <script src="{{ asset('js/ajax/student.js') }}"></script>
     {{-- <script src="{{ asset('js/ajax/search_by_input.js') }}"></script> --}}
 @endsection

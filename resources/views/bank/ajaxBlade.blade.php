@@ -24,9 +24,14 @@
     <div class="load-data">
         <table class="data-table" id="data-table">
             <caption>{{ $name }} Details</caption>
-            <thead></thead>
+            <thead>
+                <th>Sl</th>
+                <th>name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Action</th>
+            </thead>
             <tbody></tbody>
-            <tfoot></tfoot>
         </table>
 
         <div id="paginate"></div>
@@ -47,6 +52,6 @@
 
 
     <!-- ajax part start from here -->
-    {{-- <script src="{{ asset('js/ajax/admin_setup/bank_info.js') }}"></script> --}}
+    <script src="{{ asset('js/ajax/bank.js') }}"></script>
     {{-- <script src="{{ asset('js/ajax/search_by_input.js') }}"></script> --}}
 

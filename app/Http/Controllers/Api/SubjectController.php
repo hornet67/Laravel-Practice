@@ -2,14 +2,30 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use App\Models\Subject;
 
 class SubjectController extends Controller
 {
     public function show(){
-        $name = "Show Page";
-        return view('main-content.users',compact('name'));
+        $name = "Subject";
+        if($req->ajax()){
+            return view('subject.ajaxBlade',compact('name'));
+        }
+        return view('subject.main',compact('name'));
+    }
+
+
+
+    public function showData(Request $req){
+        $data = Subject::get();
+
+        return response()->json([
+            'status'=> true,
+            'data' => $data,
+        ], 200);
     }
     
     

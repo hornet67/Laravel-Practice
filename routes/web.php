@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\SubjectController;
-use App\Http\Controllers\BankController;
+use App\Http\Controllers\Api\BankController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,10 +40,11 @@ Route::controller(UserController::class)->group(function(){
 Route::controller(StudentController::class)->group(function(){
     Route::prefix('/students')->group(function(){
         Route::get('/','show')->name('showStudent');
-        Route::post('/add','add')->name('addStudent');
+        Route::get('/show','showData');
+        Route::post('/','add');
         Route::get('/edit','edit');
-        Route::post('/update','update')->name('updateStudent');
-        Route::get('/delete','delete');
+        Route::put('/','update');
+        Route::delete('/','delete');
     });
 });
 
@@ -52,6 +53,7 @@ Route::controller(StudentController::class)->group(function(){
 Route::controller(SubjectController::class)->group(function(){
     Route::prefix('/subjects')->group(function(){
         Route::get('/','show')->name('showSubject');
+        Route::get('/show','showData');
         Route::post('/','add');
         Route::get('/edit','edit');
         Route::put('/','update');
@@ -64,6 +66,7 @@ Route::controller(SubjectController::class)->group(function(){
 Route::controller(BankController::class)->group(function(){
     Route::prefix('/banks')->group(function(){
         Route::get('/','show')->name('showBank');
+        Route::get('/show','showData');
         Route::post('/','add');
         Route::get('/edit','edit');
         Route::put('/','update');

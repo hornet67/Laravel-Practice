@@ -2,21 +2,32 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Student;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+use App\Models\Student;
 
 class StudentController extends Controller
 {
     public function show(Request $req){
         // $student = Student::where('phone','like','%12%')->get();
-        $student = Student::get();
+        $name = "Student";
         if($req->ajax()){
-            return view('main-content.ajaxBlade',compact('student'));
+            return view('student.ajaxBlade',compact('name'));
         }
-        return view('main-content.student',compact('student'));
+        return view('student.main',compact('name'));
         // return view('main-content.student',['student'=>$student]);
+    }
+
+
+
+    public function showData(Request $req){
+        $data = Student::get();
+
+        return response()->json([
+            'status'=> true,
+            'data' => $data,
+        ], 200);
     }
     
     
