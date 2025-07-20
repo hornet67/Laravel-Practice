@@ -10,16 +10,6 @@ use App\Models\Bank;
 class BankController extends Controller
 {
     public function show(Request $req){
-        $name = "Bank";
-        if($req->ajax()){
-            return view('bank.ajaxBlade',compact('name'));
-        } 
-        return view('bank.main',compact('name'));
-    }
-
-
-
-    public function showData(Request $req){
         $data = Bank::get();
 
         return response()->json([
@@ -56,31 +46,70 @@ class BankController extends Controller
             'status'=> true,
             'data'=>$data
         ], 200);
-        // return view('main-content.editStudent',compact('student'));
-        // return $student;
     }
     
     
     public function update(Request $req){
         $req->validate([
             'name'=> 'required',
-            'email'=> 'required|email',
             'phone'=> 'required',
+            'address'=> 'required',
         ]);
 
-        Student::findOrFail($req->id)->update([
+        Bank::findOrFail($req->id)->update([
             'name' => $req->name,
-            'email' => $req->email,
             'phone' => $req->phone,
+            'address' => $req->address,
         ]);
 
-        return 'Succeessfully Updated';
+        // if($req->age < 18){
+        //     return response()->json([
+        //         'status'=> false,
+        //         'message' => 'Age must be greater than 18',
+        //     ], 406);
+        // }
+
+        return response()->json([
+            'status'=> true,
+            'message' => 'Data updated Successfully',
+        ], 200);
     }
     
     
     public function delete(Request $req){
-       Student::findOrFail($req->id)->delete();
-        // Student::where('email',$req->email)->delete();
-       return 'Succeessfully Deleted';
+        Bank::findOrFail($req->id)->delete();
+
+        return response()->json([
+            'status'=> true,
+            'message' => 'Data deleted Successfully',
+        ], 200);
+    }
+
+
+
+
+    public function search(Request $req){
+        if($req->option == 0){
+            $data = Bank::where('name','like','%'.$req->search.'%')
+            ->orWhere('phone','like','%'.$req->search.'%')
+            ->orWhere('address','like','%'.$req->search.'%')
+            ->orderBy('name','desc')
+            ->get();
+        }
+        else if($req->option == 1){
+            $data = Bank::where('name','like','%'.$req->search.'%')->get();
+        }
+        else if($req->option == 2){
+            $data = Bank::where('phone','like','%'.$req->search)->get();
+        }
+        else if($req->option == 3){
+            $data = Bank::where('address','like',$req->search.'%')->get();
+        }
+        
+
+        return response()->json([
+            'status'=> true,
+            'data'=>$data
+        ], 200);
     }
 }

@@ -9,17 +9,7 @@ use App\Models\Subject;
 
 class SubjectController extends Controller
 {
-    public function show(){
-        $name = "Subject";
-        if($req->ajax()){
-            return view('subject.ajaxBlade',compact('name'));
-        }
-        return view('subject.main',compact('name'));
-    }
-
-
-
-    public function showData(Request $req){
+    public function show(Request $req){
         $data = Subject::get();
 
         return response()->json([

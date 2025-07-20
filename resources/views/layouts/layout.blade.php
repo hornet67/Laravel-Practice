@@ -16,11 +16,16 @@
     <script src="{{ asset('js/jQuery-3.7.1.js') }}"></script>
 
     <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        var token = localStorage.getItem('token');
+        if (token) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Authorization': 'Bearer ' + token,
+                    'Accept': 'application/json',
+                },
+            });
+        };
     </script>
     
 

@@ -9,19 +9,11 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
+    
+
+
+
     public function show(Request $req){
-        // $student = Student::where('phone','like','%12%')->get();
-        $name = "Student";
-        if($req->ajax()){
-            return view('student.ajaxBlade',compact('name'));
-        }
-        return view('student.main',compact('name'));
-        // return view('main-content.student',['student'=>$student]);
-    }
-
-
-
-    public function showData(Request $req){
         $data = Student::get();
 
         return response()->json([

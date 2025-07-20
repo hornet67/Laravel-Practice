@@ -13,11 +13,19 @@
                     <button class="open-modal" data-modal-id="addModal" id="add"><i class="fa-solid fa-plus"></i> Add {{ $name }} </button>
                 {{-- @endif --}}
             </div>
-            <div class="c-6">
-
+            <div class="c-3">
+                <select name="selectOption" id="selectOption">
+                    <option value="0">All</option>
+                    <option value="1">Name</option>
+                    <option value="2">Phone</option>
+                    <option value="3">Address</option>
+                </select>
+            </div>
+            <div class="c-3">
+                <input type="text" id="search" placeholder="Search...">
             </div>
             <div class="c-3" style="padding: 0;">
-                <input type="text" id="globalSearch" placeholder="Search..." />
+                {{-- <input type="text" id="globalSearch" placeholder="Search..." /> --}}
             </div>
         </div>
     </div>
