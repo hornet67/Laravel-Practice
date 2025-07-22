@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ForgetPasswordController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,8 +23,14 @@ Route::get('/practice', [UserController::class, 'edit']);
 Route::get('/practice', [UserController::class, 'delete']);
 
 
+
 Route::get('/login', [LoginController::class, 'show']);
-Route::post('/login', [LoginController::class, 'login']);
+
+// *************************************** Forget Password Controller Routes Start *************************************** //
+Route::controller(ForgetPasswordController::class)->group(function () {
+    Route::get('/forgotpassword', 'ForgotPassord')->name('forgotPassword')->withoutMiddleware(CheckPermission::class);;
+    Route::get('/resetpassword', 'ResetPassword')->name('resetPassword')->withoutMiddleware(CheckPermission::class);;
+});
 
 
 Route::controller(UserController::class)->group(function(){

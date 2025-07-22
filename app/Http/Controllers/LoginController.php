@@ -17,9 +17,11 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
+        dd($req->user());
+        
         if(Auth::attempt(['email' => $req->email, 'password' => $req->password])){
             $req->session()->regenerate();
+            // dd($req);
             $user = Auth::user();
             $token = $user->createToken('API Token')->plainTextToken; // Create new api-token
             

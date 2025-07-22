@@ -6,10 +6,21 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\SubjectController;
 use App\Http\Controllers\Api\BankController;
+use App\Http\Controllers\Api\ForgetPasswordController;
+use App\Http\Controllers\LoginController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:sanctum');
+
+Route::post('/login', [LoginController::class, 'login'])->middleware('web');
+
+
+// *************************************** Forget Password Controller Routes Start *************************************** //
+Route::controller(ForgetPasswordController::class)->group(function () {
+    Route::post('/forgotpassword', 'ForgotPassword');
+    Route::post('/resetpassword',  'ResetPassword');
+});
 
 Route::middleware(['auth:sanctum'])->group(function () {
 

@@ -71,6 +71,7 @@
 
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ asset('js/ajax/crud_ajax.js') }}"></script>
     <script>
         $(document).ready(function () {
             SidebarAjax()

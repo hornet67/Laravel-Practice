@@ -58,7 +58,7 @@
                         <input type="checkbox" id="remember" name="remember" @if(isset($_COOKIE ["email"])) checked @endif>
                         <label for="remember">Remember Me</label>
                     </div>
-                    {{-- <a href="{{ route('forgotPassword') }}">Forgot Your Password?</a> --}}
+                    <a href="{{ route('forgotPassword') }}">Forgot Your Password?</a>
                 </div>
                 <div class="center">
                     <input type="submit" class="btn-blue" id="login" value="Login">
@@ -107,7 +107,7 @@
 
                     if(isValid){
                         $.ajax({
-                            url: `/login`,
+                            url: `/api/login`,
                             type: 'POST',
                             data: formData,
                             contentType: false,
@@ -119,7 +119,7 @@
                             //     withCredentials: true, // Send session cookies
                             // },
                             success: function(response) {
-                                console.log('Hi');
+                                // console.log('Hi');
                                 localStorage.setItem('token', response.token);
                                 window.location.href = '/banks';
                             },
